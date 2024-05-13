@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../include/math/Point.hpp"
+#include <math/Point.hpp> 
 
 Vector2 Point::to_vector() {
   return Vector2(this->x, this->y);

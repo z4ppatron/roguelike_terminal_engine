@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../include/math/Vector2.hpp"
+#include <math/Vector2.hpp> 
 #include <cmath>
 
 Vector2::Vector2() {
