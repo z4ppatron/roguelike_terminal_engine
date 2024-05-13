@@ -1,27 +1,35 @@
 #include <ftxui/dom/elements.hpp>
-#include <ftxui/screen/screen.hpp>
-#include "math/Vector2.cpp"
+#include <ftxui/component/captured_mouse.hpp>
+#include <ftxui/component/component.hpp>
+#include <ftxui/component/component_base.hpp>
+#include <ftxui/component/component_options.hpp>
+#include <ftxui/component/screen_interactive.hpp>
+#include "src/math/Vector2.cpp"
 
 int main(int argc, char const* argv[]) {
   using namespace ftxui;
 
-  Element document = 
-    hbox({
-        text("left")   | border,
-        text("middle") | border  | flex,
-        text("right")  | border,
-        });
+  Vector2 v = Vector2(3.0, 3.0);
+  int val = 50;  
 
-  auto screen = Screen::Create(
-      Dimension::Full(),
-      Dimension::Fit(document)
-      );
-  Render(screen, document);
-  screen.Print();
+  auto buttons = Container::Horizontal({
+    Button("Decrease", [&] { v.x = v.x - 1; }, ButtonOption::Animated(Color::Red)),
+    Button("Increase", [&] { v.x = v.x + 1; }, ButtonOption::Animated(Color::Green))
+  }); 
   
-  Vector2 v = Vector2(3, 3);
+  auto component = Renderer(buttons, [&] {
+    return vbox({
+      vbox({
+            text("value = " + to_string(v)),
+            separator(),
+            gauge(v.abs() * 0.01f),
+          }) | border,
+      buttons->Render(),
+      });
+  });
   
-  std::cout << v << std::endl;
+  auto screen = ScreenInteractive::FitComponent();
+  screen.Loop(component);
 
   return EXIT_SUCCESS;
 }

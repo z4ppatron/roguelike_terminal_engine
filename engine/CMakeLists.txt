@@ -12,6 +12,7 @@ add_library(
 )
 
 add_library(rouge::engine ALIAS rouge_engine)
+target_link_libraries(rouge_engine PUBLIC rouge::thirdparty)
 target_include_directories(
   rouge_engine
   PUBLIC include
