@@ -4,32 +4,14 @@
 #include <ftxui/component/component_base.hpp>
 #include <ftxui/component/component_options.hpp>
 #include <ftxui/component/screen_interactive.hpp>
-#include "src/math/Vector2.cpp"
+#include "src/Context.cpp"
 
 int main(int argc, char const* argv[]) {
-  using namespace ftxui;
+  using namespace ftxui; 
 
-  Vector2 v = Vector2(3.0, 3.0);
-  int val = 50;  
-
-  auto buttons = Container::Horizontal({
-    Button("Decrease", [&] { v.x = v.x - 1; }, ButtonOption::Animated(Color::Red)),
-    Button("Increase", [&] { v.x = v.x + 1; }, ButtonOption::Animated(Color::Green))
-  }); 
+  Context ctx = Context({"hey"});
   
-  auto component = Renderer(buttons, [&] {
-    return vbox({
-      vbox({
-            text("value = " + to_string(v)),
-            separator(),
-            gauge(v.abs() * 0.01f),
-          }) | border,
-      buttons->Render(),
-      });
-  });
-  
-  auto screen = ScreenInteractive::FitComponent();
-  screen.Loop(component);
+  std::cout << ctx.print() << std::endl;
 
   return EXIT_SUCCESS;
 }
