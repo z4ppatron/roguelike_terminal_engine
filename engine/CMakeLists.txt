@@ -9,6 +9,9 @@ project(
 add_library(
   rouge_engine STATIC
   src/math/Vector2.cpp
+  src/math/Point.cpp
+  src/Context.cpp
+  src/Level.cpp
 )
 
 add_library(rouge::engine ALIAS rouge_engine)
