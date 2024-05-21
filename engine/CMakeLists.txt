@@ -11,7 +11,7 @@ add_library(
   src/math/Vector2.cpp
   src/math/Point.cpp
   src/Context.cpp
-  src/Level.cpp
+  src/LevelSection.cpp
 )
 
 add_library(rouge::engine ALIAS rouge_engine)
