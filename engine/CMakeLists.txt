@@ -12,6 +12,7 @@ add_library(
   src/math/Point.cpp
   src/Context.cpp
   src/LevelSection.cpp
+  src/Player.cpp
 )
 
 add_library(rouge::engine ALIAS rouge_engine)

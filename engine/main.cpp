@@ -8,13 +8,20 @@
 #include "src/Context.cpp"
 #include <math/Matrix.hpp>
 #include "src/LevelSection.cpp"
+#include "src/Player.cpp"
 
 int main(int argc, char const* argv[]) {
   using namespace ftxui;
 
-  LevelSection level = LevelSection();
-  std::cout << std::filesystem::current_path() << std::endl;
-  level.read_from_json("/home/agd/workspace/dev/cpp/rouge_engine/engine/src/levels/test.json");
+  auto screen = ScreenInteractive::TerminalOutput();
+
+  Player p = Player();
+
+  // LevelSection level = LevelSection();
+  // std::cout << std::filesystem::current_path() << std::endl;
+  // level.read_from_json("/home/agd/workspace/dev/cpp/rouge_engine/engine/src/levels/test.json");
+
+
 
   return EXIT_SUCCESS;
 }
