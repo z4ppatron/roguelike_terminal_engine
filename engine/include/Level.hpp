@@ -1,6 +1,10 @@
 #include <LevelSection.hpp>
 #include <vector>
 
+namespace rouge {
+
 class Level {
-    vector<LevelSection> sections;
+    std::vector<LevelSection> sections;
 };
+
+}

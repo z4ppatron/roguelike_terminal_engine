@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+namespace rouge {
+
 struct Vector2 {
   int x;
   int y;
@@ -32,3 +34,5 @@ struct Vector2 {
 
 std::string to_string(const Vector2 &out);
 std::ostream &operator<<(std::ostream &out, const Vector2 &v);
+
+}
